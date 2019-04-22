@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
 
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -16,6 +17,25 @@
         android:layout_centerHorizontal="true"
         android:textSize="30dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tutorials point "
+        android:textColor="#ff87ff09"
+        android:textSize="30dp"
+        android:layout_below="@+id/textView1"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:src="@drawable/abc"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,6 +43,7 @@
         android:hint="Enter Phone Number"
         android:phoneNumber="true"
         android:textColorHint="@color/abc_primary_text_material_dark"
+        android:layout_below="@+id/imageButton"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -33,6 +54,8 @@
         android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText"
         android:textColorHint="@color/abc_primary_text_material_dark"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton"
         android:hint="Enter SMS" />
 
     <Button
