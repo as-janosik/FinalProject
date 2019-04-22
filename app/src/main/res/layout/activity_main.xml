@@ -6,34 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sending SMS Example"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tutorials point "
-        android:textColor="#ff87ff09"
-        android:textSize="30dp"
-        android:layout_below="@+id/textView1"
-        android:layout_alignRight="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton" />
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
-        android:src="@drawable/abc"
-        android:layout_below="@+id/textView2"
+        android:src="@drawable/ice_photo"
+
         android:layout_centerHorizontal="true" />
 
     <EditText
