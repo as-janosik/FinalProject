@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void sendSMSMessage() {
+        //make phoneNo always 911?  so can send gps cords with?
         phoneNo = txtphoneNo.getText().toString();
         message = txtMessage.getText().toString();
+        //Add GPS cordinates here to send with message?
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)

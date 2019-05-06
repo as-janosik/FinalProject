@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:src="@drawable/ice_photo"
-
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -25,24 +24,22 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
         android:layout_below="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
         android:textColorHint="@color/abc_primary_text_material_dark"
         android:layout_alignRight="@+id/imageButton"
         android:layout_alignEnd="@+id/imageButton"
-        android:hint="Enter SMS" />
+        android:hint="Enter Message" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Sms"
+        android:text="Send Message"
         android:id="@+id/btnSendSMS"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
