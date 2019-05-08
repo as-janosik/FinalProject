@@ -2,6 +2,8 @@ package org.example.finalproject;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     EditText txtMessage;
     String phoneNo;
     String message;
+    String locationProvider = LocationManager.GPS_PROVIDER;
+
+    Location lastKnownLocation = LocationManager.getLastKnownLocation(locationProvider);
+     //Toast.makeText(getApplicationContext(),
+    //lastKnownLocation, Toast.LENGTH_LONG).show();
 //smsManager.sendTextMessage("phoneNo", null, "sms message", null, null);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
             }
         }
+        Toast.makeText(getApplicationContext(), "SMS sent.",
+                Toast.LENGTH_LONG).show();
     }
 
     @Override
