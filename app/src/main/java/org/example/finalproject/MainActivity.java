@@ -1,9 +1,10 @@
 package org.example.finalproject;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,14 +21,11 @@ public class MainActivity extends AppCompatActivity {
     Button sendBtn;
     EditText txtphoneNo;
     EditText txtMessage;
-    String phoneNo;
-    String message;
-    String locationProvider = LocationManager.GPS_PROVIDER;
+    EditText txtContNam;
+    String phoneNo; //Phone number will be saved after first test text message
+    String message;//Message will not be saved
+    String contName;//contact name will be saved after first test text message
 
-    Location lastKnownLocation = LocationManager.getLastKnownLocation(locationProvider);
-     //Toast.makeText(getApplicationContext(),
-    //lastKnownLocation, Toast.LENGTH_LONG).show();
-//smsManager.sendTextMessage("phoneNo", null, "sms message", null, null);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +33,23 @@ public class MainActivity extends AppCompatActivity {
         sendBtn = (Button) findViewById(R.id.btnSendSMS);
         txtphoneNo = (EditText) findViewById(R.id.editText);
         txtMessage = (EditText) findViewById(R.id.editText2);
+        txtContNam = (EditText) findViewById(R.id.editText3);
+        //###################################################  CODE TO RECALL PHONE NUMBER AND NAME
+        //ADDED DEFAULT VALUES IF NO SAVED CONTACT YET
+        //CONTACT WILL BE SAVED AFTER SENDING TEST TEXT MESSAGE TO FAVORITE CONTACT.
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String number = preferences.getString("Number", "");
+        String name = preferences.getString("Name", "");
+            if(number == ""){
+                txtContNam.setText("911 Dispatch");
+                txtphoneNo.setText("911"); //DEFAULT NUMBER IS 911 IF FORGOT A NUMBER
+            }
+            else{
+                txtContNam.setText(name); //SETTING PREVIOUS NAME FROM CONFIG FILE
+                txtphoneNo.setText(number); //SETTING PREVIOUS NUMBER FROM CONFIG FILE
+            }
 
+        //###################################################
         sendBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 sendSMSMessage();
@@ -44,11 +58,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void sendSMSMessage() {
-        //make phoneNo always 911?  so can send gps cords with?
+        //make phoneNo always 911?
+        contName = txtContNam.getText().toString();
         phoneNo = txtphoneNo.getText().toString();
         message = txtMessage.getText().toString();
-        //Add GPS cordinates here to send with message?
 
+        //##################################################
+        //SAVING NUMBER AND NAME TO CONFIG FILE FOR FUTURE USE.
+        //ONLY SAVES AFTER FIRST TEXT MESSAGE.
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Number",phoneNo);
+        editor.putString("Name", contName);
+        editor.apply();
+
+//##################################################
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {

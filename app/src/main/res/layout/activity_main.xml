@@ -12,7 +12,14 @@
         android:id="@+id/imageButton"
         android:src="@drawable/ice_photo"
         android:layout_centerHorizontal="true" />
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText3"
+        android:hint="Enter Contact Name"
+        android:textColorHint="@color/abc_primary_text_material_dark"
+        android:layout_below="@+id/imageButton"
+        android:layout_centerHorizontal="true" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +27,7 @@
         android:hint="Enter Phone Number"
         android:phoneNumber="true"
         android:textColorHint="@color/abc_primary_text_material_dark"
-        android:layout_below="@+id/imageButton"
+        android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true" />
 
     <EditText
